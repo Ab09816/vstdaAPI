@@ -1,3 +1,4 @@
+// dependencies
 const express = require('express');
 const morgan = require('morgan');
 
@@ -48,12 +49,14 @@ app.get('/api/TodoItems/:todoItemId', (req, res) => {
     }
 });
 
+//post route
 app.post('/api/TodoItems', (req, res) => {
     const newTodoItem = req.body;
     todoItems.push(newTodoItem);
     res.status(201).json(newTodoItem);
 });
 
+//delete route
 app.delete('/api/TodoItems/:todoItemId', (req, res) => {
     const todoItemId = parseInt(req.params.todoItemId);
     const index = todoItems.findIndex(item => item.todoItemId === todoItemId);
@@ -65,5 +68,6 @@ app.delete('/api/TodoItems/:todoItemId', (req, res) => {
     }
 });
 
+//export app
 module.exports = app;
 
